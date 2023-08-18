@@ -3,9 +3,25 @@ layout: default
 title: Student Blog
 ---
 
-## Luna's Page
+## Aditya's blog site for CSA
 
-Go to my [Github account](https://github.com/lunaiwa) !!
+Go to my [Github account](https://github.com/Firestorm0986) !!
+
+## About Me
+- 
+## School Stuff
+Classes I am taking - 
+- AP CSA
+- AP GOV
+- AP STATS
+- World Lit
+- Intro To Finance 1
+
+CLubs I am in - 
+- DECA
+- Trail Norte
+- NHS
+
 
 ## Overview of Hacks, Study and Tangibles
 Blogging in GitHub pages is a way to learn and code at the same time. 

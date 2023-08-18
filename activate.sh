@@ -9,7 +9,7 @@
 
 # Start a terminal for commands
 $ git clone https://github.com/nighthawkcoders/student.git
-$ ./student/activate.sh
+$ student/activate.sh
 
 # Run the cat command, leave this terminal open ...
 #    the cat command shows remaining instructions  ...
