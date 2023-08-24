@@ -30,16 +30,21 @@ java --version # to check version of openjdk
 ```
 
 ## Review Versions
-- To review versions of installed packages usually the command should work - 
+To review versions of installed packages usually the command should work - 
+
 ```
+
 <package> --version
+
 ```
 
 "sudo" may be needed
 
+
 ## Update repository through git command line
 
 ```
+
 # first commit changes
 git commit <commit message>
 # Then either stash or rebase with changes from branch if conflicts
@@ -54,4 +59,5 @@ git push
 git branch -b <branch name>
 git push
 # and when you want these changes in the main branch just send a merge request from github itself 
+
 ```
