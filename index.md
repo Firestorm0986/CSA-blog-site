@@ -3,7 +3,7 @@ layout: default
 title: Student Blog
 ---
 
-{% include nav_home.html %}
+
 ## Aditya's blog site for CSA
 
 Go to my [Github account](https://github.com/Firestorm0986) !!

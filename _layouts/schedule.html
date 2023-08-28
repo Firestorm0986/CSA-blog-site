@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-
+{% include nav_home.html %}
 {%comment%} 
 Setup course data
     - Extract data by course
@@ -43,7 +43,6 @@ Load all posts with site
   <tr>
     <th>Week</th>
     <th>labs</th>
-    <th>Plans</th>
     <th>Hacks(Todo)</th>
     <th>Tangibles</th>
   </tr>
@@ -61,7 +60,6 @@ Load all posts with site
   {% assign deli = sym | compact %} 
 
   {% for index in (start..end) -%}
-    {% assign plans = null | compact %}
     {% assign hacks = null | compact %}
     {% assign tangibles = null | compact %}
     {% assign labs = null | compact %}
@@ -88,10 +86,7 @@ Load all posts with site
   {%comment%} 
   <!-- organizing blogs by type -->
   {%endcomment%}
-          {% if post.type == "plans" %} 
-              {% assign plans = plans | unshift: title %}
-              {% assign plans = plans | unshift: url %}
-          {% elsif post.type == "hacks" %}
+          {% if post.type == "hacks" %}
               {% assign hacks = hacks | unshift: title %}
               {% assign hacks = hacks | unshift: url %} 
           {% elsif post.type == "tangibles" %}
@@ -112,7 +107,7 @@ Load all posts with site
   {%comment%} 
   <!-- ordering units and inserting column delimiters -->
   {%endcomment%}
-  {% assign units = units | concat:labs | concat:deli | concat:plans | concat:deli | concat:hacks | concat:deli | concat:tangibles  %}
+  {% assign units = units | concat:labs | concat:deli | concat:hacks | concat:deli | concat:tangibles  %}
 
   {%comment%} 
   <!-- This Loop is maximum iterationss, since elements are pairs it will decrement a extra times at the end -->
