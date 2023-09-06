@@ -2,7 +2,7 @@
 layout: post
 title: Game of life
 description: A code block for game of life
-courses: { csa: {week: 1} }
+courses: { csa: {week: 2} }
 type: hacks
 ---
 
