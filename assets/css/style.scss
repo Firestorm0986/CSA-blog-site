@@ -88,3 +88,84 @@
     background-color: #e70f0f;
   }
 
+  // new scss
+  $defaultColor: #3498db;
+  $defaultString: 'DefaultString';
+  
+  // Function to create a plan with constant details
+  @function create-plan() {
+    $color:  $defaultColor; // Use the color function to ensure it's recognized as a color
+    $price: "$10/month";
+    $feature-count: 3;
+    $features: ();
+  
+    @for $i from 1 through $feature-count {
+      $features: append($features, $defaultString, comma);
+    }
+  
+    @return (
+      color: $color,
+      price: $price,
+      features: $features
+    );
+  }
+
+  // Mixin for box-shadow
+  @mixin box-shadow($value) {
+    -webkit-box-shadow: $value;
+    -moz-box-shadow: $value;
+    box-shadow: $value;
+  }
+
+  // Card mixin with variables
+  @mixin card {
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.2em;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    // Apply box shadow mixin for a smooth effect
+    @include box-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  
+    // Creates smooth animation effect
+    transition: all 0.5s;
+  }
+  
+  // Variable for plan details
+  $plan: create-plan();
+  
+  // Plan styles
+  .plan {
+    @include card;
+    margin: 10px;
+  
+    background-color: map-get($plan, color);
+    color: white;
+  
+    // Darken the background color on hover
+    &:hover {
+      background-color: darken(map-get($plan, color), 10%);
+    }
+  
+    h2 {
+      margin-bottom: 10px;
+    }
+  
+    p {
+      margin-bottom: 15px;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin: 5px 0;
+      }
+    }
+  }

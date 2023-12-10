@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #cart {
+            float: right;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        #cart-items {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        #cart-items a {
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+            text-decoration: none;
+            color: #333;
+        }
+        #cart-items a:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>E-commerce Site</h1>
+    <div id="cart">
+        🛒 Cart
+        <div id="cart-items"></div>
+    </div>
+
+    <div id="products">
+        <div class="product" data-id="1" data-name="Product 1" data-price="10">
+            <h3>Product 1</h3>
+            <p>Price: $10</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="2" data-name="Product 2" data-price="20">
+            <h3>Product 2</h3>
+            <p>Price: $20</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Add more products as needed -->
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.add-to-cart').on('click', function() {
+                var product = $(this).closest('.product');
+                var productId = product.data('id');
+                var productName = product.data('name');
+                var productPrice = product.data('price');
+
+                // Add item to cart
+                addToCart(productId, productName, productPrice);
+            });
+
+            function addToCart(id, name, price) {
+                var cartItem = $('<a href="#" data-id="' + id + '"> ' + name + ' - $' + price + '</a>');
+                $('#cart-items').append(cartItem);
+
+                // Update total price and display
+                var totalPrice = calculateTotalPrice();
+                $('#cart').attr('title', 'Total: $' + totalPrice);
+
+                // Show the cart
+                $('#cart-items').show();
+            }
+
+            function calculateTotalPrice() {
+                var totalPrice = 0;
+                $('#cart-items a').each(function() {
+                    var price = parseFloat($(this).text().split('$')[1]);
+                    totalPrice += price;
+                });
+                return totalPrice.toFixed(2);
+            }
+
+            // Close the cart when clicking outside
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('#cart').length) {
+                    $('#cart-items').hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
